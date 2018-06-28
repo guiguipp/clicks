@@ -1,5 +1,8 @@
 nav.navbar {
     margin-bottom: 0;
+    position: fixed;
+    width: 100%;
+    background: teal;
 }
 .row {
     width: 100%;

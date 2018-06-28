@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Nav from "./components/Nav";
 import Card from "./components/Card";
+import Wrapper from "./components/Wrapper";
 import presidents from "./presidents.json";
 import './App.css';
 
@@ -18,7 +19,7 @@ class App extends Component {
         <div>
           <Nav />
         </div>
-        <div>
+        <Wrapper>
           {this.state.presidents.map(president => (
             <Card 
               id={president.id}
@@ -29,7 +30,7 @@ class App extends Component {
               life={president.life}
             />
             ))}
-        </div>
+        </Wrapper>
       </div>
     );
   }
