@@ -1,0 +1,88 @@
+[
+    {
+    "id": 1,
+    "name": "George Washington",
+    "image": "./img/1.Washington.jpg",
+    "office": "April 30, 1789 – March 4, 1797",
+    "life": "1732–1799"
+    },
+    {
+    "id": 2,
+    "name": "John Adams",
+    "image": "./img/2. Adams.jpg",
+    "office": "March 4, 1797 – March 4, 1801",
+    "life": "1735–1826"
+    },
+    {
+    "id": 3,
+    "name": "Thomas Jefferson",
+    "image": "./img/3. Jefferson.jpg",
+    "office": "March 4, 1801 – March 4, 1809",
+    "life": "1743–1826"
+    },
+    {
+    "id": 4,
+    "name": "James Madison",
+    "image": "./img/4. Madison.jpg",
+    "office": "March 4, 1809 – March 4, 1817",
+    "life": "1751–1836"
+    },
+    {
+    "id": 5,
+    "name": "James Monroe",
+    "image": "./img/5. Monroe.gif",
+    "office": "March 4, 1817 – March 4, 1825",
+    "life": "1758–1831"
+    }
+    ,
+    {
+    "id": 6,
+    "name": "John Quincy Adams",
+    "image": "./img/6. Adams.jpg",
+    "office": "March 4, 1825 – March 4, 1829",
+    "life": "1767–1848"
+    }
+    ,
+    {
+    "id": 7,
+    "name": "Andrew Jackson",
+    "image": "./img/7. Jackson.jpg",
+    "office": "March 4, 1829 – March 4, 1837",
+    "life": "1767–1845"
+    },
+    {
+    "id": 8,
+    "name": "Martin Van Buren",
+    "image": "./img/8. VanBuren.jpg",
+    "office": "March 4, 1837 – March 4, 1841",
+    "life": "1782–1862"
+    },
+    {
+    "id": 9,
+    "name": "William Henry Harrison",
+    "image": "./img/9. Harrison.jpg",
+    "office": "March 4, 1841 – April 4, 1841",
+    "life": "1773–1841"
+    },
+    {
+    "id": 10,
+    "name": "John Tyler",
+    "image": "./img/10. Tyler.jpg",
+    "office": "April 4, 1841 – March 4, 1845",
+    "life": "1790–1862"
+    },
+    {
+    "id": 11,
+    "name": "James K. Polk",
+    "image": "./img/11. Polk.jpg",
+    "office": "March 4, 1845 – March 4, 1849",
+    "life": "1795–1849"
+    },
+    {
+    "id": 12,
+    "name": "Zachary Taylor",
+    "image": "./img/12. Taylor.png",
+    "office": "March 4, 1849 – July 9, 1850",
+    "life": "1784–1850"
+    }
+]
