@@ -15,7 +15,8 @@ class App extends Component {
       presidents,
       guess: 1,
       tally: 0,
-      top: 0
+      top: 0,
+      message: ""
     }
   
   componentDidMount(){
@@ -32,33 +33,24 @@ class App extends Component {
   handleClick = (president) => {    
     // id of the president clicked
     const presId = Number(president.target.id)
-    console.log("presID: ", presId)
-    console.log("Guess: ", this.state.guess)
-    console.log("Tally: ", this.state.tally)
     // cloning this.state
     const newState = {...this.state};
     
     if (newState.guess === presId) {
-      console.log("Good guess")
-      this.setState({
-        guess: newState.guess + 1,
-        tally: newState.tally + 1
-        })
-        if (newState.tally > newState.top) {
-          console.log("Top so far: ", newState.top)
-          this.setState({
-            top: newState.tally
-          })
+      console.log("This is correct!")
+      newState.guess = newState.guess +1;
+      newState.tally = newState.tally +1;
+      this.setState(newState)
+      if (newState.tally > newState.top) {
+        newState.top = newState.tally
+        this.setState(newState)
         }
-        // this.state.tally++
-      // guess + 1;
-    }
+      }
     else {
-      console.log("Bad guess")
-      this.setState({
-        guess: 1,
-        tally: 0,
-        })
+      console.log("This is incorrect")
+      newState.guess = 1;
+      newState.tally = 0;
+      this.setState(newState)
     }
   }
 
