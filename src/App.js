@@ -12,28 +12,43 @@ import './App.css';
 class App extends Component {
   // information passed as this.state.presidents will be the presidents json array
   state = {
-    presidents
+    presidents,
+    guess: 1,
+    tally: 0
   };
-  // handleClick = event => {
-  //   // Get the id of the president clicked (which is their #)
-  //   const presId = event.target.attributes.getNamedItem("id").value;
-  //   console.log(presId)
+  
+  // constructor(props) {
+  //   super(props);
+    // state = {
+    //   guess: 1,
+    //   tally: 0
+    // }
   // }
-  /*onItemClick: function(item, e) {
-    console.log("item")
-    // const presId = this.props.data.id;
-    console.log("The card was clicked: ", presId)
-  }*/
-  /*componentDidMount(){
-    function handleClick (e) {
-      e.preventDefault()
-    }
-  }*/
-  handleClick = (president) => {
-    console.log('click')
-    const presId = president.target.id
+
+  handleClick = (president) => {    
+    const presId = Number(president.target.id)
     console.log("presID: ", presId)
+    console.log("Guess: ", this.state.guess)
+    console.log("Tally: ", this.state.tally)
+    
+    if (this.state.guess === presId) {
+      console.log("Good guess")
+      this.setState({
+        guess: this.state.guess + 1,
+        tally: this.state.tally + 1
+        })
+      // this.state.tally++
+      // guess + 1;
+    }
+    else {
+      console.log("Bad guess")
+      this.setState({
+        guess: 1,
+        tally: 0,
+        })
+    }
   }
+  
 
   render() {
     return (
