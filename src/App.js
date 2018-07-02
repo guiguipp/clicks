@@ -16,30 +16,42 @@ class App extends Component {
       guess: 1,
       tally: 0,
       top: 0,
-      message: ""
+      message: "Welcome to the Click game!"
     }
   
   componentDidMount(){
     this.loadPres()
   }
-  // constructor(props) {
-  //   super(props);
-    // state = {
-    //   guess: 1,
-    //   tally: 0
-    // }
-  // }
-
+  
   handleClick = (president) => {    
+    
+    const numToString = (number) => {
+      switch (number) {
+        case 1:
+        return number = "st"
+        
+        case 2:
+        return number = "nd"
+        
+        case 3:
+        return number = "rd"
+        
+        default:
+        return number = "th"
+        
+      }
+    }
     // id of the president clicked
     const presId = Number(president.target.id)
     // cloning this.state
     const newState = {...this.state};
+    console.log("newState: ", newState)
     
     if (newState.guess === presId) {
-      console.log("This is correct!")
       newState.guess = newState.guess +1;
       newState.tally = newState.tally +1;
+      let pres = this.state.presidents[presId-1]
+      newState.message = `This is correct!\n${pres.name} (${pres.life}) was the ${presId}${numToString(presId)} president of the United States. \nHe stayed in office: ${pres.office}`
       this.setState(newState)
       if (newState.tally > newState.top) {
         newState.top = newState.tally
@@ -47,9 +59,9 @@ class App extends Component {
         }
       }
     else {
-      console.log("This is incorrect")
       newState.guess = 1;
       newState.tally = 0;
+      newState.message = "This is incorrect"
       this.setState(newState)
     }
   }

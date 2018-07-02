@@ -1,6 +1,6 @@
 import React from "react";
 import "./Nav.css";
-import "./Message";
+import Message from "./Message";
 import Counter from "./Counter";
 import { Navbar } from "reactstrap";
 
@@ -14,7 +14,9 @@ const Nav = props => (
                 </h3>
             </div> 
             <div className="col">
-                Welcome Message
+                <Message> 
+                {props.children}
+                </Message>
             </div> 
             <div className="col">
                 <Counter>
