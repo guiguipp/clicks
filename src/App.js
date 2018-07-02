@@ -18,40 +18,60 @@ class App extends Component {
       top: 0,
       message: "Welcome to the Click game!"
     }
-  
-  componentDidMount(){
+    
+      // Using the shuffling algorithm to display presidents randomly
+      loadPres = () => {
+        // cloning the array
+        const presidents = {...this.state.presidents};
+        console.log(presidents)
+        let newState = []
+        this.randomize(Object.values(presidents),newState)
+        console.log("newState: ", newState)
+        return this.setState(newState)
+      }
+      randomize = (inputArray, outputArray) => {
+        console.log("Randomize calling itself")
+        if(inputArray.length > 0) {
+          let randomPres = inputArray[Math.floor(Math.random()*inputArray.length)];
+          let index = inputArray.indexOf(randomPres);
+          outputArray.push(randomPres);
+          inputArray.splice(index,1);
+          this.randomize(inputArray,outputArray)
+          this.setState({
+            presidents: outputArray
+          })
+        }
+        }
+    
+  componentWillMount(){
+    console.log("doing something")
     this.loadPres()
   }
   
   handleClick = (president) => {    
-    
     const numToString = (number) => {
       switch (number) {
         case 1:
         return number = "st"
-        
         case 2:
         return number = "nd"
-        
         case 3:
         return number = "rd"
-        
         default:
-        return number = "th"
-        
+        return number = "th"  
       }
     }
     // id of the president clicked
     const presId = Number(president.target.id)
     // cloning this.state
     const newState = {...this.state};
-    console.log("newState: ", newState)
+    // console.log("newState: ", newState)
     
     if (newState.guess === presId) {
       newState.guess = newState.guess +1;
       newState.tally = newState.tally +1;
-      let pres = this.state.presidents[presId-1]
-      newState.message = `This is correct!\n${pres.name} (${pres.life}) was the ${presId}${numToString(presId)} president of the United States. \nHe stayed in office: ${pres.office}`
+      let pres = presidents[presId-1] // because array starts at 0
+      newState.message = `This is correct!\n${pres.name} (${pres.life}) was the ${pres.id}${numToString(pres.id)} president of the United States. \nHe stayed in office: ${pres.office}`
       this.setState(newState)
       if (newState.tally > newState.top) {
         newState.top = newState.tally
@@ -61,15 +81,11 @@ class App extends Component {
     else {
       newState.guess = 1;
       newState.tally = 0;
-      newState.message = "This is incorrect"
+      newState.message = "This is incorrect."
       this.setState(newState)
     }
   }
 
-  loadPres = () => {
-    console.log("Where they will be loading randomly")
-  }
-  
 
   render() {
     return (

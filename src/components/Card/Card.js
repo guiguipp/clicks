@@ -10,13 +10,7 @@ const Card = ({onClick, image, name, life, office, id}) => (
     <div className="content">
         <ul>
             <li>
-            <strong>Name:</strong> {name} 
-            </li>
-            <li>
-            <strong>Office:</strong> {office}
-            </li>
-            <li>
-            <strong>Life:</strong> {life}
+            {name} 
             </li>
         </ul>
     </div>
