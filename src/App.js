@@ -11,12 +11,16 @@ import './App.css';
 // }
 class App extends Component {
   // information passed as this.state.presidents will be the presidents json array
-  state = {
-    presidents,
-    guess: 1,
-    tally: 0
-  };
+    state = {
+      presidents,
+      guess: 1,
+      tally: 0,
+      top: 0
+    }
   
+  componentDidMount(){
+    this.loadPres()
+  }
   // constructor(props) {
   //   super(props);
     // state = {
@@ -26,18 +30,27 @@ class App extends Component {
   // }
 
   handleClick = (president) => {    
+    // id of the president clicked
     const presId = Number(president.target.id)
     console.log("presID: ", presId)
     console.log("Guess: ", this.state.guess)
     console.log("Tally: ", this.state.tally)
+    // cloning this.state
+    const newState = {...this.state};
     
-    if (this.state.guess === presId) {
+    if (newState.guess === presId) {
       console.log("Good guess")
       this.setState({
-        guess: this.state.guess + 1,
-        tally: this.state.tally + 1
+        guess: newState.guess + 1,
+        tally: newState.tally + 1
         })
-      // this.state.tally++
+        if (newState.tally > newState.top) {
+          console.log("Top so far: ", newState.top)
+          this.setState({
+            top: newState.tally
+          })
+        }
+        // this.state.tally++
       // guess + 1;
     }
     else {
@@ -48,13 +61,20 @@ class App extends Component {
         })
     }
   }
+
+  loadPres = () => {
+    console.log("Where they will be loading randomly")
+  }
   
 
   render() {
     return (
       <div>
         <div>
-          <Nav />
+          <Nav>
+            {this.state}
+          </Nav> 
+          
         </div>
         <Wrapper>
           {this.state.presidents.map(president => (
