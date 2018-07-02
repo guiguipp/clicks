@@ -3,6 +3,7 @@ nav.navbar {
     position: fixed;
     width: 100%;
     background: teal;
+    z-index: 10;
 }
 .row {
     width: 100%;

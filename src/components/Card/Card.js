@@ -1,21 +1,22 @@
 import React from "react";
 import "./Card.css";
 
-const Card = props => (
-<div className="card">
+// deconstructing the props for legibility
+const Card = ({onClick, image, name, life, office, id}) => (
+<div onClick={onClick} className={`card`}>
     <div className="img-container">
-        <img alt={props.name} src={props.image} />
+        <img alt={name} src={image} id={id} />
     </div>
     <div className="content">
         <ul>
             <li>
-            <strong>Name:</strong> {props.name}
+            <strong>Name:</strong> {name} 
             </li>
             <li>
-            <strong>Office:</strong> {props.office}
+            <strong>Office:</strong> {office}
             </li>
             <li>
-            <strong>Life:</strong> {props.life}
+            <strong>Life:</strong> {life}
             </li>
         </ul>
     </div>
