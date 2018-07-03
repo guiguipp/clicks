@@ -3,6 +3,7 @@ import Nav from "./components/Nav";
 import Card from "./components/Card";
 import Wrapper from "./components/Wrapper";
 import presidents from "./presidents.json";
+import _ from 'underscore';
 import './App.css';
 
 // function handleClick(e) {
@@ -18,34 +19,36 @@ class App extends Component {
       top: 0,
       message: "Welcome to the Click game!"
     }
-    
+    /*
       // Using the shuffling algorithm to display presidents randomly
       loadPres = () => {
         // cloning the array
-        const presidents = {...this.state.presidents};
+        let presidents = {...this.state.presidents};
         console.log(presidents)
-        let newState = []
-        this.randomize(Object.values(presidents),newState)
-        console.log("newState: ", newState)
-        return this.setState(newState)
+        let shuffledArray = []
+        this.randomize(Object.values(presidents),shuffledArray)
+        // console.log("newState: ", newState)
+        // this.setState(newPresidents
       }
       randomize = (inputArray, outputArray) => {
-        console.log("Randomize calling itself")
+        // console.log("Randomize calling itself")
         if(inputArray.length > 0) {
           let randomPres = inputArray[Math.floor(Math.random()*inputArray.length)];
           let index = inputArray.indexOf(randomPres);
           outputArray.push(randomPres);
           inputArray.splice(index,1);
           this.randomize(inputArray,outputArray)
+          console.log("Output Array before being pushed via setState: ", outputArray)
           this.setState({
             presidents: outputArray
           })
         }
-        }
+        }*/
     
   componentWillMount(){
     console.log("doing something")
-    this.loadPres()
+    const newState = {...this.state};
+    this.setState({...newState, presidents: _.shuffle(presidents)})
   }
   
   handleClick = (president) => {    
@@ -72,17 +75,19 @@ class App extends Component {
       newState.tally = newState.tally +1;
       let pres = presidents[presId-1] // because array starts at 0
       newState.message = `This is correct!\n${pres.name} (${pres.life}) was the ${pres.id}${numToString(pres.id)} president of the United States. \nHe stayed in office: ${pres.office}`
-      this.setState(newState)
+      this.setState({...newState, presidents: _.shuffle(presidents)})
+      // this.loadPres()
+      // loadPress()
       if (newState.tally > newState.top) {
         newState.top = newState.tally
-        this.setState(newState)
+        this.setState({...newState, presidents: _.shuffle(presidents)})
         }
       }
     else {
       newState.guess = 1;
       newState.tally = 0;
       newState.message = "This is incorrect."
-      this.setState(newState)
+      this.setState({...newState, presidents: _.shuffle(presidents)})
     }
   }
 
